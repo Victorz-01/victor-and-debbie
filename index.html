@@ -13,17 +13,16 @@
             box-sizing: border-box;
         }
 
-       body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
-    min-height: 100vh;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
 
-html {
-    overflow-x: hidden;
-}
+        html {
+            overflow-x: hidden;
         }
 
         /* ===== WELCOME PAGE ===== */
@@ -487,8 +486,20 @@ html {
         }
 
         .about-card .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 4px solid #e91e63;
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .about-card .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
         }
 
         .about-card h3 {
@@ -746,7 +757,7 @@ html {
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(233, 30, 99, 0.2);
-            background: #000;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
         }
 
         .slider-track {
@@ -764,7 +775,7 @@ html {
             height: 500px;
             object-fit: contain;
             display: block;
-            background: #000;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
         }
 
         .slide-caption {
@@ -1062,13 +1073,17 @@ html {
             <h2 class="section-title">About Us</h2>
             <div class="about-cards">
                 <div class="about-card">
-                    <div class="icon">🤵</div>
+                    <div class="icon">
+                        <img src="images/memory11.jpg" alt="Vic">
+                    </div>
                     <h3>Victor</h3>
                     <p>I've always been a man of science and logic, but Debbie is the one beautiful thing I have never nedded to prove. She's my calm in the chaos and the best part of everyday. When I'm with her, I'm exactly where I'm supposed to be.</p>
                     <span class="role">The King 👑</span>
                 </div>
                 <div class="about-card">
-                    <div class="icon">👰</div>
+                    <div class="icon">
+                        <img src="images/memory12.jpg" alt="Deb">
+                    </div>
                     <h3>Debbie</h3>
                     <p>Debbie is the kind of magic you don't see everday. She's got a heart that's far too big for her chest and a soul that makes everything around her brighter. She isn't just my partner; she's my home</p>
                     <span class="role">The Queen 👑</span>
@@ -1269,6 +1284,19 @@ html {
                         <img src="images/memory10.jpg" alt="Memory 10">
                         <div class="slide-caption">😍</div>
                     </div>
+<div class="slide">
+                        <img src="images/memory13.jpg" alt="Memory 2">
+                        <div class="slide-caption">🎉</div>
+                    </div>
+<div class="slide">
+                        <img src="images/memory14.jpg" alt="Memory 2">
+                        <div class="slide-caption">😍</div>
+                    </div>
+<div class="slide">
+                        <img src="images/memory15.jpg" alt="Memory 2">
+                        <div class="slide-caption">💕</div>
+                    </div>
+
                 </div>
                 <button class="slider-btn prev-btn" id="prevBtn">❮</button>
                 <button class="slider-btn next-btn" id="nextBtn">❯</button>
@@ -1318,255 +1346,268 @@ html {
 
     </div>
     <!-- END OF MAIN CONTENT -->
+<script>
+    // ===== WELCOME PAGE =====
+    var welcomePage = document.getElementById('welcomePage');
+    var oopsPage = document.getElementById('oopsPage');
+    var mainContent = document.getElementById('mainContent');
+    var yesBtn = document.getElementById('yesBtn');
+    var noBtn = document.getElementById('noBtn');
+    var tryAgainBtn = document.getElementById('tryAgainBtn');
 
-        <script>
-        // ===== WELCOME PAGE =====
-        var welcomePage = document.getElementById('welcomePage');
-        var oopsPage = document.getElementById('oopsPage');
-        var mainContent = document.getElementById('mainContent');
-        var yesBtn = document.getElementById('yesBtn');
-        var noBtn = document.getElementById('noBtn');
-        var tryAgainBtn = document.getElementById('tryAgainBtn');
+    // ===== MUSIC (moved up) =====
+    var musicBtn = document.getElementById('musicBtn');
+    var bgMusic = document.getElementById('bgMusic');
+    var isPlaying = false;
 
-        // Welcome hearts
-        function createWelcomeHearts() {
-            var container = document.getElementById('welcomeHearts');
-            if (!container) return;
-            var hearts = ['❤️', '💕', '💗', '💖', '💝', '💘'];
-            for (var i = 0; i < 20; i++) {
-                var heart = document.createElement('span');
-                heart.classList.add('welcome-floating-heart');
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                heart.style.animationDelay = (Math.random() * 5) + 's';
-                container.appendChild(heart);
-            }
+    // Welcome hearts
+    function createWelcomeHearts() {
+        var container = document.getElementById('welcomeHearts');
+        if (!container) return;
+        var hearts = ['❤️', '💕', '💗', '💖', '💝', '💘'];
+        for (var i = 0; i < 20; i++) {
+            var heart = document.createElement('span');
+            heart.classList.add('welcome-floating-heart');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(heart);
         }
-        createWelcomeHearts();
+    }
+    createWelcomeHearts();
 
-        // NO button runs away from mouse!
-        if (noBtn) {
-            noBtn.addEventListener('mouseover', function() {
-                var x = Math.random() * (window.innerWidth - 200);
-                var y = Math.random() * (window.innerHeight - 100);
-                this.style.position = 'fixed';
-                this.style.left = x + 'px';
-                this.style.top = y + 'px';
-                this.style.zIndex = '99999';
-            });
-
-            noBtn.addEventListener('click', function() {
-                welcomePage.style.display = 'none';
-                oopsPage.classList.add('show');
-            });
-        }
-
-        // YES button clicked
-        if (yesBtn) {
-            yesBtn.addEventListener('click', function() {
-                welcomePage.style.transition = 'opacity 1s ease';
-                welcomePage.style.opacity = '0';
-                setTimeout(function() {
-                    welcomePage.style.display = 'none';
-                    mainContent.classList.add('show');
-                    setTimeout(function() {
-                        var preloader = document.getElementById('preloader');
-                        if (preloader) preloader.classList.add('hidden');
-                    }, 2500);
-                }, 1000);
-            });
-        }
-
-        // TRY AGAIN button
-        if (tryAgainBtn) {
-            tryAgainBtn.addEventListener('click', function() {
-                oopsPage.classList.remove('show');
-                welcomePage.style.display = 'flex';
-                welcomePage.style.opacity = '1';
-            });
-        }
-
-        // ===== MOBILE MENU =====
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
+    // NO button runs away from mouse!
+    if (noBtn) {
+        noBtn.addEventListener('mouseover', function() {
+            var x = Math.random() * (window.innerWidth - 200);
+            var y = Math.random() * (window.innerHeight - 100);
+            this.style.position = 'fixed';
+            this.style.left = x + 'px';
+            this.style.top = y + 'px';
+            this.style.zIndex = '99999';
         });
 
-        document.querySelectorAll('#navMenu a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('navMenu').classList.remove('active');
-            });
+        noBtn.addEventListener('click', function() {
+            welcomePage.style.display = 'none';
+            oopsPage.classList.add('show');
         });
+    }
 
-        // ===== COUNTER =====
-        var startDate = new Date('2013-01-01T00:00:00');
-
-        function updateCounter() {
-            var now = new Date();
-            var years = now.getFullYear() - startDate.getFullYear();
-            var months = now.getMonth() - startDate.getMonth();
-            var days = now.getDate() - startDate.getDate();
-
-            if (days < 0) {
-                months--;
-                var prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-                days += prevMonth.getDate();
-            }
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            document.getElementById('years').textContent = years;
-            document.getElementById('months').textContent = months;
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = now.getHours();
-            document.getElementById('minutes').textContent = now.getMinutes();
-            document.getElementById('seconds').textContent = now.getSeconds();
-        }
-
-        updateCounter();
-        setInterval(updateCounter, 1000);
-
-        // ===== FLOATING HEARTS =====
-        function createFloatingHearts() {
-            var container = document.getElementById('heartsBg');
-            if (!container) return;
-            var hearts = ['❤️', '💕', '💗', '💖', '💝', '🩷', '🤍', '💘'];
-            for (var i = 0; i < 25; i++) {
-                var heart = document.createElement('span');
-                heart.classList.add('floating-heart');
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.animationDuration = (Math.random() * 12 + 8) + 's';
-                heart.style.animationDelay = (Math.random() * 10) + 's';
-                container.appendChild(heart);
-            }
-        }
-        createFloatingHearts();
-
-        // ===== SCROLL ANIMATION =====
-        var observerTargets = document.querySelectorAll('.timeline-item, .reason-card, .dream-item, .about-card, .milestone-item');
-
-        var scrollObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.15 });
-
-        observerTargets.forEach(function(item) {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'all 0.6s ease';
-            scrollObserver.observe(item);
-        });
-
-        // ===== SMOOTH SCROLL =====
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                var target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // ===== MUSIC =====
-        var musicBtn = document.getElementById('musicBtn');
-        var bgMusic = document.getElementById('bgMusic');
-        var isPlaying = false;
-
-        if (musicBtn && bgMusic) {
-            musicBtn.addEventListener('click', function() {
-                if (isPlaying) {
-                    bgMusic.pause();
-                    musicBtn.textContent = '🎵';
-                    musicBtn.classList.remove('playing');
-                } else {
-                    bgMusic.play();
-                    musicBtn.textContent = '⏸️';
-                    musicBtn.classList.add('playing');
-                }
-                isPlaying = !isPlaying;
-            });
-        }
-
-        // ===== SLIDER =====
-        var sliderTrack = document.getElementById('sliderTrack');
-        var slides = document.querySelectorAll('.slide');
-        var prevBtnEl = document.getElementById('prevBtn');
-        var nextBtnEl = document.getElementById('nextBtn');
-        var dotsContainer = document.getElementById('sliderDots');
-        var currentSlide = 0;
-        var totalSlides = slides.length;
-
-        if (dotsContainer && totalSlides > 0) {
-            for (var i = 0; i < totalSlides; i++) {
-                var dot = document.createElement('button');
-                dot.classList.add('slider-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.setAttribute('data-index', i);
-                dot.addEventListener('click', function() {
-                    goToSlide(parseInt(this.getAttribute('data-index')));
+    // YES button clicked
+    if (yesBtn) {
+        yesBtn.addEventListener('click', function() {
+            if (bgMusic) {
+                bgMusic.loop = true;
+                bgMusic.play().then(function() {
+                    isPlaying = true;
+                    if (musicBtn) {
+                        musicBtn.textContent = '⏸️';
+                        musicBtn.classList.add('playing');
+                    }
+                }).catch(function(err) {
+                    console.log('Music autoplay failed:', err);
                 });
-                dotsContainer.appendChild(dot);
             }
+
+            welcomePage.style.transition = 'opacity 1s ease';
+            welcomePage.style.opacity = '0';
+            setTimeout(function() {
+                welcomePage.style.display = 'none';
+                mainContent.classList.add('show');
+                setTimeout(function() {
+                    var preloader = document.getElementById('preloader');
+                    if (preloader) preloader.classList.add('hidden');
+                }, 2500);
+            }, 1000);
+        });
+    }
+
+    // TRY AGAIN button
+    if (tryAgainBtn) {
+        tryAgainBtn.addEventListener('click', function() {
+            oopsPage.classList.remove('show');
+            welcomePage.style.display = 'flex';
+            welcomePage.style.opacity = '1';
+        });
+    }
+
+    // ===== MOBILE MENU =====
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('#navMenu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // ===== COUNTER =====
+    var startDate = new Date('2013-08-09T00:00:00');
+
+    function updateCounter() {
+        var now = new Date();
+        var years = now.getFullYear() - startDate.getFullYear();
+        var months = now.getMonth() - startDate.getMonth();
+        var days = now.getDate() - startDate.getDate();
+
+        if (days < 0) {
+            months--;
+            var prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            days += prevMonth.getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
         }
 
-        var dots = document.querySelectorAll('.slider-dot');
+        document.getElementById('years').textContent = years;
+        document.getElementById('months').textContent = months;
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = now.getHours();
+        document.getElementById('minutes').textContent = now.getMinutes();
+        document.getElementById('seconds').textContent = now.getSeconds();
+    }
 
-        function goToSlide(index) {
-            currentSlide = index;
-            if (sliderTrack) {
-                sliderTrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    // ===== FLOATING HEARTS =====
+    function createFloatingHearts() {
+        var container = document.getElementById('heartsBg');
+        if (!container) return;
+        var hearts = ['❤️', '💕', '💗', '💖', '💝', '🩷', '🤍', '💘'];
+        for (var i = 0; i < 25; i++) {
+            var heart = document.createElement('span');
+            heart.classList.add('floating-heart');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 12 + 8) + 's';
+            heart.style.animationDelay = (Math.random() * 10) + 's';
+            container.appendChild(heart);
+        }
+    }
+    createFloatingHearts();
+
+    // ===== SCROLL ANIMATION =====
+    var observerTargets = document.querySelectorAll('.timeline-item, .reason-card, .dream-item, .about-card, .milestone-item');
+
+    var scrollObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
-            dots.forEach(function(d) { d.classList.remove('active'); });
-            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-        }
+        });
+    }, { threshold: 0.15 });
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            goToSlide(currentSlide);
-        }
+    observerTargets.forEach(function(item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'all 0.6s ease';
+        scrollObserver.observe(item);
+    });
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            goToSlide(currentSlide);
-        }
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
 
-        if (nextBtnEl) nextBtnEl.addEventListener('click', nextSlide);
-        if (prevBtnEl) prevBtnEl.addEventListener('click', prevSlide);
+    // ===== MUSIC TOGGLE BUTTON =====
+    if (musicBtn && bgMusic) {
+        musicBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.textContent = '🎵';
+                musicBtn.classList.remove('playing');
+            } else {
+                bgMusic.loop = true;
+                bgMusic.play();
+                musicBtn.textContent = '⏸️';
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
+    }
 
-        var autoSlide = setInterval(nextSlide, 4000);
+    // ===== SLIDER =====
+    var sliderTrack = document.getElementById('sliderTrack');
+    var slides = document.querySelectorAll('.slide');
+    var prevBtnEl = document.getElementById('prevBtn');
+    var nextBtnEl = document.getElementById('nextBtn');
+    var dotsContainer = document.getElementById('sliderDots');
+    var currentSlide = 0;
+    var totalSlides = slides.length;
 
-        var sliderContainer = document.querySelector('.slider-container');
-        if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', function() {
-                clearInterval(autoSlide);
+    if (dotsContainer && totalSlides > 0) {
+        for (var i = 0; i < totalSlides; i++) {
+            var dot = document.createElement('button');
+            dot.classList.add('slider-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('data-index', i);
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.getAttribute('data-index')));
             });
-            sliderContainer.addEventListener('mouseleave', function() {
-                autoSlide = setInterval(nextSlide, 4000);
-            });
-
-            var touchStartX = 0;
-            var touchEndX = 0;
-
-            sliderContainer.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            sliderContainer.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchStartX - touchEndX > 50) nextSlide();
-                else if (touchEndX - touchStartX > 50) prevSlide();
-            });
+            dotsContainer.appendChild(dot);
         }
-    </script>
-            
+    }
+
+    var dots = document.querySelectorAll('.slider-dot');
+
+    function goToSlide(index) {
+        currentSlide = index;
+        if (sliderTrack) {
+            sliderTrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+        }
+        dots.forEach(function(d) { d.classList.remove('active'); });
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        goToSlide(currentSlide);
+    }
+
+    if (nextBtnEl) nextBtnEl.addEventListener('click', nextSlide);
+    if (prevBtnEl) prevBtnEl.addEventListener('click', prevSlide);
+
+    var autoSlide = setInterval(nextSlide, 4000);
+
+    var sliderContainer = document.querySelector('.slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', function() {
+            clearInterval(autoSlide);
+        });
+        sliderContainer.addEventListener('mouseleave', function() {
+            autoSlide = setInterval(nextSlide, 4000);
+        });
+
+        var touchStartX = 0;
+        var touchEndX = 0;
+
+        sliderContainer.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        sliderContainer.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextSlide();
+            else if (touchEndX - touchStartX > 50) prevSlide();
+        });
+    }
+</script>
